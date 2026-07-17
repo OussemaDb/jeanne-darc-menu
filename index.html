@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Café Jeanne d'Arc — Menu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0b0908;
+    --bg-panel: #121010;
+    --gold: #c9a86a;
+    --gold-bright: #e8cf9e;
+    --gold-dim: #8a7248;
+    --cream: #f2ead8;
+    --hair: rgba(201,168,106,0.35);
+    --shadow: rgba(0,0,0,0.6);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(ellipse at 50% 0%, #1a1512 0%, var(--bg) 60%),
+      var(--bg);
+    color: var(--cream);
+    font-family: 'EB Garamond', serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .frame{
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 28px 18px 60px;
+    position: relative;
+  }
+
+  /* ornamental corner flourish */
+  .corner{
+    position:absolute;
+    width:46px; height:46px;
+    border: 1px solid var(--gold-dim);
+    opacity:0.7;
+  }
+  .corner.tl{top:10px;left:10px;border-right:none;border-bottom:none;}
+  .corner.tr{top:10px;right:10px;border-left:none;border-bottom:none;}
+  .corner.bl{bottom:10px;left:10px;border-right:none;border-top:none;}
+  .corner.br{bottom:10px;right:10px;border-left:none;border-top:none;}
+
+  header.hero{
+    text-align:center;
+    padding: 18px 0 26px;
+  }
+  .crest{
+    width: 96px; height: 96px;
+    margin: 0 auto 14px;
+    border-radius: 50%;
+    border: 1.5px solid var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Cinzel Decorative', serif;
+    font-size: 34px;
+    color: var(--gold-bright);
+    letter-spacing: 2px;
+    background: radial-gradient(circle at 50% 30%, #1c1712, #0b0908 75%);
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.4), 0 0 30px rgba(201,168,106,0.08);
+  }
+  .brand-eyebrow{
+    font-family:'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 5px;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  h1.brand{
+    font-family:'Cinzel Decorative', serif;
+    font-weight: 700;
+    font-size: clamp(30px, 8vw, 44px);
+    margin: 4px 0 10px;
+    color: var(--gold-bright);
+    letter-spacing: 2px;
+    text-shadow: 0 2px 20px rgba(201,168,106,0.15);
+  }
+  .tagline{
+    font-style: italic;
+    color: var(--gold);
+    font-size: 15px;
+    letter-spacing: 1px;
+  }
+  .divider{
+    width: 140px;
+    height: 1px;
+    margin: 18px auto;
+    background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+    position:relative;
+  }
+  .divider::before{
+    content:"❖";
+    position:absolute;
+    left:50%; top:50%;
+    transform: translate(-50%,-50%);
+    background: var(--bg);
+    padding: 0 10px;
+    color: var(--gold);
+    font-size: 12px;
+  }
+
+  /* category nav pills */
+  nav.catnav{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content:center;
+    margin: 4px 0 28px;
+    padding: 14px;
+    border-top: 1px solid var(--hair);
+    border-bottom: 1px solid var(--hair);
+  }
+  nav.catnav a{
+    color: var(--gold);
+    text-decoration:none;
+    font-family:'Cinzel', serif;
+    font-size: 10.5px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    border: 1px solid var(--gold-dim);
+    padding: 7px 12px;
+    border-radius: 2px;
+    transition: all .2s ease;
+    white-space:nowrap;
+  }
+  nav.catnav a:hover, nav.catnav a:focus-visible{
+    background: var(--gold);
+    color: #1a1410;
+  }
+
+  section.category{
+    margin-bottom: 34px;
+    scroll-margin-top: 20px;
+  }
+  .cat-head{
+    text-align:center;
+    margin-bottom: 16px;
+  }
+  .cat-head .icon{
+    font-size: 20px;
+    display:block;
+    margin-bottom: 6px;
+    color: var(--gold);
+  }
+  .cat-head h2{
+    font-family:'Cinzel', serif;
+    font-size: 21px;
+    letter-spacing: 3px;
+    color: var(--gold-bright);
+    margin: 0 0 8px;
+    font-weight: 600;
+  }
+  .cat-head .rule{
+    width: 60px; height:1px;
+    margin: 0 auto;
+    background: var(--gold-dim);
+  }
+
+  ul.items{
+    list-style:none;
+    margin:0; padding:0;
+  }
+  ul.items li{
+    display:flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 9px 4px;
+    border-bottom: 1px dotted rgba(201,168,106,0.18);
+  }
+  ul.items li:last-child{border-bottom:none;}
+  .item-name{
+    font-size: 16.5px;
+    color: var(--cream);
+    flex-shrink: 0;
+  }
+  .item-name .note{
+    display:block;
+    font-size: 12px;
+    font-style: italic;
+    color: var(--gold-dim);
+  }
+  .fill{
+    flex:1;
+    border-bottom: 1px dotted rgba(201,168,106,0.3);
+    transform: translateY(-4px);
+    min-width: 20px;
+  }
+  .item-price{
+    font-family:'Cinzel', serif;
+    font-size: 14.5px;
+    color: var(--gold-bright);
+    white-space:nowrap;
+    flex-shrink:0;
+    letter-spacing:0.5px;
+  }
+
+  .two-col{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: 0 40px;
+  }
+  @media(min-width: 560px){
+    .two-col{grid-template-columns: 1fr 1fr;}
+  }
+
+  footer{
+    text-align:center;
+    margin-top: 40px;
+    padding-top: 26px;
+    border-top: 1px solid var(--hair);
+  }
+  .badges{
+    display:flex;
+    justify-content:center;
+    gap: 22px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+  }
+  .badge{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+    max-width: 90px;
+  }
+  .badge .ic{
+    font-size: 18px;
+    color: var(--gold);
+  }
+  .badge span{
+    font-family:'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+  }
+  .closing{
+    font-family:'Cinzel Decorative', serif;
+    font-size: 17px;
+    color: var(--gold);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .status{
+    font-size: 12px;
+    color: var(--gold-dim);
+    letter-spacing: 1px;
+  }
+
+  a.back-top{
+    position: fixed;
+    bottom: 18px;
+    right: 18px;
+    width: 42px; height:42px;
+    border-radius: 50%;
+    background: var(--bg-panel);
+    border: 1px solid var(--gold-dim);
+    color: var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    text-decoration:none;
+    font-size: 16px;
+    box-shadow: 0 4px 14px var(--shadow);
+    opacity: 0.85;
+  }
+</style>
+</head>
+<body>
+
+<div class="frame">
+  <div class="corner tl"></div>
+  <div class="corner tr"></div>
+  <div class="corner bl"></div>
+  <div class="corner br"></div>
+
+  <header class="hero">
+    <div class="crest">JA</div>
+    <div class="brand-eyebrow">Café · Chicha · Détente</div>
+    <h1 class="brand">Café Jeanne d'Arc</h1>
+    <div class="tagline">L'art du café, le plaisir partagé</div>
+  </header>
+
+  <div class="divider"></div>
+
+  <nav class="catnav" aria-label="Catégories du menu">
+    <a href="#cafe">Café</a>
+    <a href="#the">Thé</a>
+    <a href="#hot">Hot Drinks</a>
+    <a href="#jus">Jus</a>
+    <a href="#smoothies">Smoothies</a>
+    <a href="#fraiches">Boissons Fraîches</a>
+    <a href="#boissons">Boissons</a>
+    <a href="#chicha">Chicha</a>
+  </nav>
+
+  <div class="two-col">
+    <div>
+      <section class="category" id="cafe">
+        <div class="cat-head">
+          <span class="icon">☕</span>
+          <h2>Café</h2>
+          <div class="rule"></div>
+        </div>
+        <ul class="items">
+          <li><span class="item-name">Expresso</span><span class="fill"></span><span class="item-price">2,80 DT</span></li>
+          <li><span class="item-name">Cappuccino</span><span class="fill"></span><span class="item-price">3,00 DT</span></li>
+          <li><span class="item-name">Café Crème</span><span class="fill"></span><span class="item-price">3,50 DT</span></li>
+          <li><span class="item-name">Américain</span><span class="fill"></span><span class="item-price">2,90 DT</span></li>
+          <li><span class="item-name">Chocolat au lait</span><span class="fill"></span><span class="item-price">4,00 DT</span></li>
+          <li><span class="item-name">Nescafé au lait</span><span class="fill"></span><span class="item-price">4,00 DT</span></li>
+          <li><span class="item-name">Ice Coffee Caramel</span><span class="fill"></span><span class="item-price">5,50 DT</span></li>
+          <li><span class="item-name">Ice Coffee Noisette</span><span class="fill"></span><span class="item-price">5,50 DT</span></li>
+        </ul>
+      </section>
+
+      <section class="category" id="the">
+        <div class="cat-head">
+          <span class="icon">🍵</span>
+          <h2>Thé</h2>
+          <div class="rule"></div>
+        </div>
+        <ul class="items">
+          <li><span class="item-name">Thé à la menthe</span><span class="fill"></span><span class="item-price">2,50 DT</span></li>
+          <li><span class="item-name">Thé aux amandes</span><span class="fill"></span><span class="item-price">5,50 DT</span></li>
+          <li><span class="item-name">Thé infusion</span><span class="fill"></span><span class="item-price">4,50 DT</span></li>
+        </ul>
+      </section>
+
+      <section class="category" id="hot">
+        <div class="cat-head">
+          <span class="icon">🍫</span>
+          <h2>Hot Drinks</h2>
+          <div class="rule"></div>
+        </div>
+        <ul class="items">
+          <li><span class="item-name">Chocolat chaud classique</span><span class="fill"></span><span class="item-price">5,50 DT</span></li>
+          <li><span class="item-name">Chocolat chaud Chantilly</span><span class="fill"></span><span class="item-price">6,50 DT</span></li>
+        </ul>
+      </section>
+
+      <section class="category" id="supplements">
+        <div class="cat-head">
+          <span class="icon">✦</span>
+          <h2>Suppléments</h2>
+          <div class="rule"></div>
+        </div>
+        <ul class="items">
+          <li><span class="item-name">Nestlé</span><span class="fill"></span><span class="item-price">2,00 DT</span></li>
+          <li><span class="item-name">Caramel</span><span class="fill"></span><span class="item-price">1,50 DT</span></li>
+          <li><span class="item-name">Noisette</span><span class="fill"></span><span class="item-price">1,50 DT</span></li>
+          <li><span class="item-name">Grenadine</span><span class="fill"></span><span class="item-price">1,00 DT</span></li>
+          <li><span class="item-name">Sirop menthe</span><span class="fill"></span><span class="item-price">1,00 DT</span></li>
+        </ul>
+      </section>
+    </div>
+
+    <div>
+      <section class="category" id="jus">
+        <div class="cat-head">
+          <span class="icon">🍊</span>
+          <h2>Jus</h2>
+          <div class="rule"></div>
+        </div>
+        <ul class="items">
+          <li><span class="item-name">Jus d'orange</span><span class="fill"></span><span class="item-price">4,50 DT</span></li>
+          <li><span class="item-name">Jus de citronnade</span><span class="fill"></span><span class="item-price">5,50 DT</span></li>
+          <li><span class="item-name">Jus de fraise</span><span class="fill"></span><span class="item-price">6,50 DT</span></li>
+          <li><span class="item-name">Jus de banane</span><span class="fill"></span><span class="item-price">6,50 DT</span></li>
+          <li><span class="item-name">Jus de kiwi</span><span class="fill"></span><span class="item-price">6,50 DT</span></li>
+          <li><span class="item-name">Jus citronnade aux amandes</span><span class="fill"></span><span class="item-price">6,50 DT</span></li>
+        </ul>
+      </section>
+
+      <section class="category" id="smoothies">
+        <div class="cat-head">
+          <span class="icon">🍓</span>
+          <h2>Smoothies</h2>
+          <div class="rule"></div>
+        </div>
+        <ul class="items">
+          <li><span class="item-name">Smoothie Fraise</span><span class="fill"></span><span class="item-price">6,50 DT</span></li>
+          <li><span class="item-name">Smoothie Banane</span><span class="fill"></span><span class="item-price">6,50 DT</span></li>
+          <li><span class="item-name">Smoothie Kiwi</span><span class="fill"></span><span class="item-price">6,50 DT</span></li>
+          <li><span class="item-name">Smoothie Citronnade</span><span class="fill"></span><span class="item-price">5,50 DT</span></li>
+        </ul>
+      </section>
+
+      <section class="category" id="fraiches">
+        <div class="cat-head">
+          <span class="icon">🍹</span>
+          <h2>Boissons Fraîches</h2>
+          <div class="rule"></div>
+        </div>
+        <ul class="items">
+          <li><span class="item-name">Virgin Mojito</span><span class="fill"></span><span class="item-price">5,50 DT</span></li>
+          <li><span class="item-name">Mojito Bleu</span><span class="fill"></span><span class="item-price">6,50 DT</span></li>
+          <li><span class="item-name">Mojito Red</span><span class="fill"></span><span class="item-price">7,50 DT</span></li>
+          <li><span class="item-name">Mojito Jeanne d'Arc</span><span class="fill"></span><span class="item-price">9,00 DT</span></li>
+          <li><span class="item-name">Mojito Piña Colada</span><span class="fill"></span><span class="item-price">9,00 DT</span></li>
+        </ul>
+      </section>
+
+      <section class="category" id="boissons">
+        <div class="cat-head">
+          <span class="icon">💧</span>
+          <h2>Boissons</h2>
+          <div class="rule"></div>
+        </div>
+        <ul class="items">
+          <li><span class="item-name">Eau 1 L</span><span class="fill"></span><span class="item-price">3,00 DT</span></li>
+          <li><span class="item-name">Eau 0,5 L</span><span class="fill"></span><span class="item-price">2,00 DT</span></li>
+          <li><span class="item-name">Soda</span><span class="fill"></span><span class="item-price">3,50 DT</span></li>
+        </ul>
+      </section>
+
+      <section class="category" id="chicha">
+        <div class="cat-head">
+          <span class="icon">💨</span>
+          <h2>Chicha</h2>
+          <div class="rule"></div>
+        </div>
+        <ul class="items">
+          <li><span class="item-name">Fakher</span><span class="fill"></span><span class="item-price">8,00 DT</span></li>
+          <li><span class="item-name">Chikh Money</span><span class="fill"></span><span class="item-price">10,00 DT</span></li>
+          <li><span class="item-name">Love</span><span class="fill"></span><span class="item-price">10,00 DT</span></li>
+          <li><span class="item-name">Chicha au choix <span class="note">(avec thé)</span></span><span class="fill"></span><span class="item-price">8,50 DT</span></li>
+          <li><span class="item-name">Chicha vide</span><span class="fill"></span><span class="item-price">3,00 DT</span></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <footer>
+    <div class="badges">
+      <div class="badge"><span class="ic">🪑</span><span>Ambiance chaleureuse</span></div>
+      <div class="badge"><span class="ic">🌿</span><span>Produits de qualité</span></div>
+      <div class="badge"><span class="ic">🍽️</span><span>Service soigné</span></div>
+      <div class="badge"><span class="ic">🕐</span><span>Ouvert tous les jours</span></div>
+    </div>
+    <div class="closing">Venez vivre l'expérience Jeanne d'Arc</div>
+    <div class="status">Détente · Plaisir · Partagé</div>
+  </footer>
+</div>
+
+<a href="#top" class="back-top" aria-label="Retour en haut">↑</a>
+
+</body>
+</html>
